@@ -1,0 +1,14 @@
+[
+    {
+        "address": "1234 Sesame St. Nowhere, USA 65928",
+        "is_admin": "true"
+    },
+    {
+        "address": "546 Chicago St. Mississippi, AL 50457",
+        "is_admin": "true"
+    },
+    {
+        "address": "1600 Pennsylvania Avenue NW, Washington, DC 20500",
+        "is_admin": "true"
+    }
+]

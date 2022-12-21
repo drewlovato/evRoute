@@ -1,0 +1,92 @@
+<div class="row">
+  <div id="map" class="col my-2 mx-auto rounded" style="height: 600px;"></div>
+</div>
+
+<div class="row text-center">
+  <div class="col">
+    Double click on map to find the 25 closest chargers within a 25 mile radius.
+  </div>
+</div>
+<form id="directionsForm">
+  <div class="row my-2">
+    <div class="col-2 text-end">
+      <label for="txtTitle">Title</label>
+    </div>
+    <div class="col-10">
+      <input class="form-control" type="text" id="txtTitle"
+      {{#if trip}}
+        value="{{trip.title}}"
+      {{/if}} />
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-2 text-end">
+      <label for="txtStartAddress">Start Address</label>
+    </div>
+    <div class="col-10">
+      <input
+        class="form-control"
+        type="text"
+        id="txtStartAddress"
+        {{#if trip}}
+          value="{{trip.source_address}}"
+        {{else}}
+          value="{{userStartAddress}}"
+        {{/if}}
+      />
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-2 text-end">
+      <label for="txtDestinationAddress">Destination Address</label>
+    </div>
+    <div class="col-10">
+      <input class="form-control" type="text" id="txtDestinationAddress"
+      {{#if trip}}
+        value="{{trip.destination_address}}"
+      {{/if}}
+      />
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-2 text-end">
+      <label for="ddlElectricVehicle">Electric Vehicle</label>
+    </div>
+    <div class="col-10">
+      <select id="ddlElectricVehicle" class="form-select">
+        {{#each vehicles as |vehicle|}}
+          <option value="{{electric_vehicle.id}}">{{electric_vehicle.model_year}}
+            {{electric_vehicle.manufacturer_name}}
+            {{electric_vehicle.model}}</option>
+        {{/each}}
+      </select>
+      <input id="hdnSelectedEVID" type="hidden"
+      {{#if trip}}
+        value="{{trip.electric_vehicle_id}}"
+      {{/if}}
+      />
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col text-center">
+      <button id="btnDirections" class="btn btn-primary text-bg-primary">Get
+        Directions</button>
+      <button
+        id="btnSave"
+        type="submit"
+        class="btn btn-success text-bg-success"
+      >Save to My Trips</button>
+      <button id="btnClear" class="btn btn-secondary text-bg-secondary">Clear
+        Markers</button>
+      <input id="hdnUserID" type="hidden" value="{{user_id}}" />
+      <input id="hdnTripID" type="hidden"
+      {{#if trip}}
+        value="{{trip.id}}"
+      {{/if}}
+      />
+    </div>
+  </div>
+</form>
+
+<script src="/js/config.js"></script>
+<script src="/js/trip.js"></script>
